@@ -21,7 +21,7 @@ namespace customKeyboard.Controllers
     {
       _context = context;
     }
-    //@path api/products
+    //@Route Post api/products
     //@disc add a product to the database
     //@auth public 
     [HttpPost]
@@ -34,6 +34,16 @@ namespace customKeyboard.Controllers
       // return the result
       return StatusCode(201, value);
 
+    }
+
+    //@path  Get api/products
+    //@disc Get all products from the DB
+    //@auth public 
+    [HttpGet]
+    public IActionResult GetAllProducts()
+    {
+      var products = _context.Products;
+      return Ok(products);
     }
   }
 }
