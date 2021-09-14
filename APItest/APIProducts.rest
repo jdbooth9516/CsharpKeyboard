@@ -1,2 +1,23 @@
 // create a product 
 POST https://localhost:5001/api/products HTTP/1.1
+Content-Type: application/json
+
+{
+  "Name": "switch lube",
+  "ShortDisc": "adds lubrication to the internals of the switch",
+  "LongDisc": "Improves the sound and feel of the keystroke and helps elimate some of the freeplay in the switch.",
+  "Price": 30.00,
+  "Photo": "None",
+  "Catagory": "services"
+}
+
+
+###
+//get all products 
+
+GET https://localhost:5001/api/products HTTP/1.1
+
+
+###
+// get the products by catagory
+GET https://localhost:5001/api/products/switches HTTP/1.1

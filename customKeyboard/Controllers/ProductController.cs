@@ -1,5 +1,5 @@
-using System; 
-using System.Linq; 
+using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using customKeyboard.Data;
 using customKeyboard.Models;
@@ -44,6 +44,20 @@ namespace customKeyboard.Controllers
     {
       var products = _context.Products;
       return Ok(products);
+    }
+
+    //@path  Get api/products/category:name
+    //@disc Get products by category
+    //@auth public 
+
+    [HttpGet("{categoryName}")]
+    public IActionResult GetProductsByCategory(string categoryName)
+    {
+      // get all the Products from the database
+      var products = _context.Products;
+      var filteredProducts = products.Where(product => product.Catagory == categoryName);
+      return Ok(filteredProducts);
+
     }
   }
 }
