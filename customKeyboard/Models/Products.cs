@@ -4,8 +4,9 @@ using System;
 namespace customKeyboard.Models
 {
     public class Products
-    {
-        public int  ProductId { get; set; }
+    { 
+        
+        public int Id { get; set; }
         public string Name { get; set; }
         public string ShortDisc { get; set; }
         public string LongDisc { get; set; }

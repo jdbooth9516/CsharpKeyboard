@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using customKeyboard.Data;
 
 namespace customKeyboard.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210914023144_products")]
+    partial class products
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace customKeyboard.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b6ee1141-76c3-410b-9103-3a2101e70d2e",
-                            ConcurrencyStamp = "15b8ae29-5e5f-4681-bf60-5959b7207915",
+                            Id = "e627f33d-316f-4e50-839d-1898b5743c90",
+                            ConcurrencyStamp = "bc50aaab-3ce3-42b1-b63c-fd2a68f2aa15",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "7623f11f-a276-46c7-a635-6d5aac2f6f56",
-                            ConcurrencyStamp = "97bbe2c3-c0d7-4b15-a6e8-15ae3ed4d4c3",
+                            Id = "5b556ae6-ed36-47c6-92de-8b696cfe9fed",
+                            ConcurrencyStamp = "a5cb647a-3799-42a8-92f0-8d685b299ef6",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -166,29 +168,6 @@ namespace customKeyboard.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("customKeyboard.Models.Builds", b =>
-                {
-                    b.Property<int>("BuildsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("BuildPrice")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BuildsId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Builds");
-                });
-
             modelBuilder.Entity("customKeyboard.Models.Products", b =>
                 {
                     b.Property<int>("Id")
@@ -217,60 +196,6 @@ namespace customKeyboard.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("customKeyboard.Models.ShippingAddress", b =>
-                {
-                    b.Property<int>("ShippingAddressId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("city")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("state")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("userId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("userId1")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("zip")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ShippingAddressId");
-
-                    b.HasIndex("userId1");
-
-                    b.ToTable("ShippingAddress");
-                });
-
-            modelBuilder.Entity("customKeyboard.Models.ShoppingCarts", b =>
-                {
-                    b.Property<int>("ShoppingCartsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BuildsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ShoppingCartsId");
-
-                    b.HasIndex("BuildsId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ShoppingCarts");
                 });
 
             modelBuilder.Entity("customKeyboard.Models.User", b =>
@@ -393,43 +318,6 @@ namespace customKeyboard.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("customKeyboard.Models.Builds", b =>
-                {
-                    b.HasOne("customKeyboard.Models.Products", "Products")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("customKeyboard.Models.ShippingAddress", b =>
-                {
-                    b.HasOne("customKeyboard.Models.User", "user")
-                        .WithMany()
-                        .HasForeignKey("userId1");
-
-                    b.Navigation("user");
-                });
-
-            modelBuilder.Entity("customKeyboard.Models.ShoppingCarts", b =>
-                {
-                    b.HasOne("customKeyboard.Models.Builds", "Builds")
-                        .WithMany()
-                        .HasForeignKey("BuildsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("customKeyboard.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Builds");
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
