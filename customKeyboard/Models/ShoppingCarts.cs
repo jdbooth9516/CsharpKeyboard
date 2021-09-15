@@ -16,7 +16,5 @@ namespace customKeyboard.Models
     [ForeignKey("Builds")]
     public int BuildsId { get; set; }
     public Builds Builds { get; set; }
-
-
   }
 }

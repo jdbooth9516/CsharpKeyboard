@@ -7,9 +7,9 @@ using customKeyboard.Models;
 
 namespace customKeyboard.Controllers
 {
-  /// <summary>
-  ///     this is the root route for every api in this class
-  /// </summary> 
+
+  //     this is the root route for every api in this class
+
   [Route("/api/products")]
   [ApiController]
 
@@ -46,7 +46,7 @@ namespace customKeyboard.Controllers
       return Ok(products);
     }
 
-    //@path  Get api/products/category:name
+    //@path  Get api/products/cateforyName
     //@disc Get products by category
     //@auth public 
 
